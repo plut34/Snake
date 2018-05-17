@@ -26,8 +26,20 @@ public class ModuleGame implements Module{
     @Override
     public int run() {
        Random rnd = new Random();
-       int key = rnd.nextInt(4); //0-up, 1-down, 2-left, 3-right
-        
+       int genKey = rnd.nextInt(4); //0-up, 1-down, 2-left, 3-right
+       int key = 0;
+       if (genKey == 0){
+           key=keyUp();
+       }
+       if (genKey == 1){
+           key=keyDown();
+       }
+       if (genKey == 2){
+           key=keyLeft();
+       }
+       if (genKey == 3){
+           key=keyRight();
+       }
         keyDelay++;
         if (keyDelay >= 5) {
             gm.snake.canMove = true;
@@ -74,6 +86,19 @@ public class ModuleGame implements Module{
         }
         return 0;
     }
+   
+   public int keyUp(){
+        return 0; 
+   }
+   public int keyDown(){
+        return 1; 
+   }
+   public int keyLeft(){
+        return 2; 
+   }
+   public int keyRight(){
+        return 3; 
+   }
    
 
     @Override

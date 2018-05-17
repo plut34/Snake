@@ -1,0 +1,17 @@
+language: java
+
+jdk: oraclejdk9
+
+before_install:
+
+- chmod +x gradlew
+
+install:
+
+- ./gradlew assemble -x test
+
+script:
+
+- ./gradlew check
+
+- ./gradlew test

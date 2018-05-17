@@ -2,7 +2,8 @@ package com.mygdx.game;
 
 import java.util.ArrayList;
 import java.util.Random;
-
+import java.util.Timer;
+import java.util.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
@@ -200,8 +201,27 @@ public class GameField implements Screen {
             pear.subject.setPosition(rndx, rndy);
 
         }
-
-        apple1.subject.draw(game.batch);
+       // Timer timer = new Timer();
+       // timer.schedule(new TimerTask() {
+        /* @Override
+         public void run() {
+         // Your database code here
+            apple1.subject.draw(game.batch);
+         }
+        }, 100, 100);*/
+        
+        int show = rnd.nextInt(10);
+        long startTime = System.currentTimeMillis();
+        long elapsedTime = 0;
+        if(show!=1 && show !=2 && show !=4 ){
+        while (elapsedTime < 20) {
+            //perform db poll/check
+            elapsedTime = (new Date()).getTime() - startTime;
+            apple1.subject.draw(game.batch);
+        }
+        
+        }
+       
         apple2.subject.draw(game.batch);
         apple3.subject.draw(game.batch);
         stump.subject.draw(game.batch);
@@ -212,6 +232,8 @@ public class GameField implements Screen {
       
 
     }
+    
+    
 
      public void gameOver() {
         if (snake.die()) {
@@ -265,3 +287,6 @@ public class GameField implements Screen {
     }
 
 }
+
+
+
